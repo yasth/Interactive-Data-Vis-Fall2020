@@ -1,0 +1,4 @@
+.row:nth-child(even){
+    border: 1px solid lightgrey;
+    background-color:lightgrey;
+}

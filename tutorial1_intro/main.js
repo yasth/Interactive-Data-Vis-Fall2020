@@ -26,6 +26,6 @@ function displayPane(index){
     window.columns.map(k=> max.push(d3.max(activeData.map(f=>Number(f[k])))));
     const rows = tbody.selectAll(".row").data(activeData).join("tr").attr("class","row");
     rows.selectAll(".cell").data(d=>Object.values(d)).join("td")
-    .attr("style",(d,i) =>isFinite(d)&& i>0? "color:"+(max[i])+";background-color:rgb(255,"+(1-Math.max((d/max[i]-.7),0))*255+","+(1-Math.max((d/max[i]-.7),0))*255+")" : "").attr("class", "cell").text(d=>d);
+    .attr("style",(d,i) =>isFinite(d)&& i>0? "background-color:rgba(255,"+(1-Math.max((d/max[i]-.7),0))*255+","+(1-Math.max((d/max[i]-.7),0))*255+",.5)" : "background-color:rgba(255,255,255,.5);").attr("class", "cell").text(d=>d);
     console.log(data);
 }
