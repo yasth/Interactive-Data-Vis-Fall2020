@@ -1,12 +1,105 @@
-<!DOCTYPE html>
-  <head>
-    <meta charset="utf-8">
-    <title>Interactive Data Visualization Tutorial</title>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    Welcome to Interactive Data Visualization Tutorials
-    <script src="../lib/d3.js"></script>
-    <script src="main.js"></script>
-  </body>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Interactive Data Visualization Tutorial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
+</head>
+
+<body>
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">Bar Charts</h4>
+            <p class="text-muted">Bar Charts are a good way to display a few categories with finite amounts</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Charts</h4>
+            <ul class="list-unstyled">
+              <li><a href="#first" class="text-white">The Start Chart</a></li>
+              <li><a href="#seccond" class="text-white">Charts of Change</a></li>
+              <li><a href="#third" class="text-white">Final</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+          <strong>Bar Charts</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>A first chart</h2>
+        <div class="firstHide">This should be on its side, obv</div>
+        <div class="center"><button id="firstGraphBtn" class="btn btn-primary" onclick="firstGraphShift(event)">Press to
+            Adjust</button></div>
+            <div id="firstShow" style="display:none">Hey that is just rotated! better try again</div>
+      </div>
+
+      <div name="first" class="col-sm-6" id="first-graph"></div>
+    </div>
+    <div class="row">
+      <div name="second" class="col-sm-6" id="second-graph"></div>
+      <div class="col-sm-6">
+        <h2>A Butterfly chart</h2>
+        <div class="secondHide">Well this graph doesn't look right</div>
+        <div class="center"><button id="secondGraphBtn" class="btn btn-primary" onclick="secondGraphShift(event)">Press
+            to
+            Adjust</button></div>
+        <div id="secondShow" style="display:none">Oh that is better... wait a minute</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>A Third chart</h2>
+        Well this looks perfectly normal and boring. Certainly nothing would happen if you were to drag on the graph...
+      </div>
+      <div name="third" class="col-sm-6" >
+        <x3d  width="400px" height="400px">
+          
+          <scene id="third-graph">
+
+
+          </scene>
+        </x3d>
+      </div>
+    </div>
+  </div>
+
+  <script src="../lib/d3.js"></script>
+  <script src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

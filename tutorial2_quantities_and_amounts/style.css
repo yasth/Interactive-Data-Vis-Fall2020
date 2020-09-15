@@ -1,0 +1,21 @@
+.rotateGraph{
+    transform:rotate(90deg)
+}
+.rotateGraph .label{
+}
+.rotateGraph .tick text{
+    transform:rotate(-180deg)
+}
+#first-graph{
+    transition: 1s ease-in-out;
+}
+.second .tick text{
+    transform:rotate(-90deg) translate(60px, 1px);
+}
+#second-graph svg.second{
+    animation: mymove 5s infinite;
+}
+@keyframes mymove {
+    from {transform:rotate3d(0, 1, 0, -30deg)}
+    to {transform: rotate3d(0, 1, 0, 30deg)}
+  }
