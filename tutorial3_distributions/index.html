@@ -5,8 +5,17 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <label for="dropdown">Filter Selection</label>
+    <label for="dropdown">Rating Source Selection</label>
     <select id="dropdown" name="dropdown"></select>
+       <fieldset id="genreFieldSet">
+         <legend>Genres</legend>
+          <ul id="genreFieldList" style="list-style:none"></li>
+        </fieldset>
+        <fieldset >
+          <legend>Streaming Service</legend>
+           <ul id="streamingServiceList" style="list-style:none"></li>
+         </fieldset>
+         <h4>Mouse over to see title, click to go to IMDb</h4>
     <div id="d3-container"> </div>
     <script src="../lib/d3.js"></script>
     <script src="main.js"></script>

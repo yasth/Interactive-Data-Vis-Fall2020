@@ -1,0 +1,10 @@
+fieldset ul{
+    column-count:4;
+}
+
+#streamingServiceList{
+    column-count:4;
+}
+circle{
+    cursor: pointer;
+}
