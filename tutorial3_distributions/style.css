@@ -1,10 +1,28 @@
 fieldset ul{
     column-count:4;
 }
-
-#streamingServiceList{
-    column-count:4;
+label{
+    font-family: "Helvetica Neue", "Helvetica", "Arial";
+    font-size:150%;
+    display:inline-block;
+}
+fieldset ul input{
+    margin-left:1em;
+    display:inline-block;
+}
+@media only screen and (max-device-width: 640px){
+    fieldset ul{
+        column-count:2;
+        
+    }
+    fieldset ul li{
+        margin: 2em 0
+    }
 }
 circle{
     cursor: pointer;
+}
+#dropdown{
+    font-size:150%;
+    width:300px;
 }
