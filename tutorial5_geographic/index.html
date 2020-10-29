@@ -1,13 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- this is the title that goes in the browser tab name  -->
     <title>Interactive Data Visualization Tutorial</title>
+
+    <!-- custom font: https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    Welcome to Interactive Data Visualization Tutorials
-    <div id="d3-container"> </div>
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h2 class="my-0 mr-md-auto font-weight-normal">Geographic vs Population Centers</h2>
+      <nav class="my-2 my-md-0 mr-md-3">Tutorial 5</nav>
+    </header>
+<div id="container" class="container">
+    <div class="col">
+      <div class="row step">
+        <div class="col">     
+           <div id="hover-content"></div>
+           In red we show the geographic center of the state (or rather a geographic center as there multiple methods of calculation);
+           in blue we see the population center. 
+      </div>
+    </div>
+    <div class="row step">
+      <div class="col">     
+             <div id="hover-content"></div>
+             If we look at the geo distance as a plot we see that population seems important to distance. 
+        </div>
+
+    </div>
+    <div class="row step">
+      <div class="col">     
+            New York is an obvious exception
+            </div>
+    </div>
+    </div>
+     <div class="col">
+      <div id="d3-container"> </div>
+    </div>
+  </div>
+  </div>
+    <!-- all we need is an element to select -->
+    
+    <!-- this is the line that loads in d3 -->
     <script src="../lib/d3.js"></script>
-    <script src="main.js"></script>
+    <!-- this is the line that loads in the main js script -->
+    <script src="./main.js"></script>
+  </div>
   </body>
 </html>
