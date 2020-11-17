@@ -264,8 +264,38 @@ const speakerData = {
   "ANNETTE ROONEY, Student:": ["RECORDED", "X"],
   "JAMES THOMPSON, Student:": ["RECORDED", "X"],
   "GWYNETH COLLART, Student:": ["RECORDED", "X"],
-  "RISCH:": ["GUEST", "M"],
-  "RISCH:": ["GUEST", "M"],
+  "TAMARA KEITH, BYLINE:": ["IN-HOUSE", "F"],
+  "TAMARA KEITH:": ["IN-HOUSE", "F"],
+  "KEITH:": ["IN-HOUSE", "F"],
+  "UNIDENTIFIED REPORTER:": ["RECORDED", "X"],
+  "RUDY GIULIANI:": ["RECORDED", "M"],
+  "GIULIANI:": ["RECORDED", "M"],
+  "JOE BIDEN:": ["RECORDED", "M"],
+  "GEORGE STEPHANOPOULOS:": ["RECORDED", "M"],
+  "PRESIDENT VOLODYMYR ZELENSKIY:": ["RECORDED", "M"],
+  "ZELENSKIY:": ["RECORDED", "M"],
+  "DOMENICO MONTANARO, BYLINE:": ["IN-HOUSE", "M"],
+  "MONTANARO:": ["IN-HOUSE", "M"],
+  "BOB RICKARD:": ["GUEST", "M"],
+  "RICKARD:": ["GUEST", "M"],
+  "STEPHANIE LOVING:": ["GUEST", "F"],
+  "LOVING:": ["GUEST", "F"],
+  "ANGELA DUPIN:": ["GUEST", "X"],
+  "COURTNEY FRY:": ["GUEST", "F"],
+  "RACHEL JONES:": ["GUEST", "F"],
+  "DALE HOFER:": ["GUEST", "M"],
+  "HOFER:": ["GUEST", "M"],
+  "PAUL FLAHIVE, BYLINE:": ["IN-HOUSE", "M"],
+  "FLAHIVE:": ["IN-HOUSE", "M"],
+  "GALE MCCONNAUGHEY:": ["GUEST", "F"],
+  "MCCONNAUGHEY:": ["GUEST", "F"],
+  "RICKARD:": ["GUEST", "M"],
+  "JIM BRADBURY:": ["GUEST", "M"],
+  "ZELENSKIY:": ["RECORDED", "M"],
+  "ZELENSKIY:": ["RECORDED", "M"],
+  "ZELENSKIY:": ["RECORDED", "M"],
+  "ZELENSKIY:": ["RECORDED", "M"],
+  "ZELENSKIY:": ["RECORDED", "M"],
 
 }
 
@@ -369,10 +399,10 @@ function draw(){
   for (let l = 0; l < state.data.length; l++) {
     let ourData = state.data[l];
     svg.selectAll("rect.trans" + l).data(ourData[1]).join("rect").attr("class", "trans" + l).attr("x", xScale(ourData[0]) - 24).attr("y", (d, i) => (yScale(d[1][state.dataYAccessor] - d[1][state.dataAccessor] + (i *  maxOfData/1000)) + 50) || 1)
-      .attr("width", 50).attr("height", d => yScale(d[1][state.dataAccessor]) || 1).attr("fill", d => colors(speakerData[d[0]] && speakerData[d[0]][state.colorAccessor] || "undefined"))
+      .attr("width", 50).attr("height", d => yScale(d[1][state.dataAccessor]) || 1).attr("fill", d => colors(speakerData[ourData[0] + " " + d[0]] && speakerData[ourData[0] + " " + d[0]][state.colorAccessor] || speakerData[d[0]] && speakerData[d[0]][state.colorAccessor] || "undefined"))
       .on('mouseover', function (e,d) {
         if (d != null) {
-          d3.select('#tooltip').style('opacity', .8).style("background-color", colors(speakerData[d[0]] && speakerData[d[0]][state.colorAccessor] || "undefined")).text(`${d[0]} ${speakerData[d[0]] && speakerData[d[0]][0] || "undefined"} ${speakerData[d[0]] && speakerData[d[0]][1] || "undefined"} Longest: ${d[1][2]}`)
+          d3.select('#tooltip').style('opacity', .8).style("background-color", colors(speakerData[ourData[0] + " " + d[0]] && speakerData[ourData[0] + " " + d[0]][state.colorAccessor] || speakerData[d[0]] && speakerData[d[0]][state.colorAccessor] || "undefined")).text(`${d[0]} ${speakerData[d[0]] && speakerData[d[0]][0] || "undefined"} ${speakerData[d[0]] && speakerData[d[0]][1] || "undefined"} Longest: ${d[1][2]}`)
         }
       }).on('mouseout', function () {
         d3.select('#tooltip').style('opacity', 0)
