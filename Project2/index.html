@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Interactive Data Visualization Tutorial</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Who speaks: Demographics of Media On Camera talent</h1>
+    <!-- <h2>Gender Identity</h2>
+    <div class="row">
+      <div id="leftGender" class="col"></div>
+      <div id="rightGender" class="col"></div>
+    </div> -->
+    <h2>Education</h2>
+    <form onchange="changeEducation(event)">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary">
+          <input type="radio" name="Some HS" id="option1" autocomplete="off" value="Some HS">Some HS
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option2" autocomplete="off" value="HS Graduate">HS Graduate
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3" autocomplete="off" value="Some College"> Some College
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option4" autocomplete="off" value="Associates"> Associates
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3" autocomplete="off" value="Bachelors"> Bachelors
+        </label>
+        <label class="btn btn-primary ">
+          <input type="radio" name="options" id="option3" autocomplete="off" value="Masters"> Masters
+        </label>
+        <label class="btn btn-primary ">
+          <input type="radio" name="options" id="option3" autocomplete="off" value="Professional"> Professional
+        </label>
+        <label class="btn btn-primary ">
+          <input type="radio" name="options" id="option3" autocomplete="off" value="Doctorate"> Doctorate
+        </label>
+      </div>
+    </form>
+
+    <div class="row">
+      <div id="leftEducation" class="col-12"></div>
+      <div id="rightEducation" class="col-12"></div>
+    </div>
+    Us Education based on <a
+      href="https://www.census.gov/data/tables/2019/demo/educational-attainment/cps-detailed-tables.html">Census table
+      2.1</a>
+    <h2>Selectivity of Education</h2>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option2" autocomplete="off" value="HS Graduate">&lt; 50%
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option3" autocomplete="off" value="Some College"> 50-70%
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option4" autocomplete="off" value="Associates"> 71-85%
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option4" autocomplete="off" value="Associates"> &gt; 85%
+      </label>
+     </div>
+     Report based on <a href="NACA 2017 study">https://www.nacacnet.org/globalassets/documents/publications/research/2018_soca/soca2019_all.pdf</a> 
+    <h2>Focus of Education</h2>
+    <h2>College Qualia</h2>
+
+    <!-- all we need is an element to select -->
+    <div id="d3-container"> </div>
+  </div>
+  <script src="../lib/d3.js"></script>
+  <script src="../lib/d3-array.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
