@@ -27,7 +27,11 @@
       <div id="rightGender" class="col"></div>
     </div> -->
     <h2>Education</h2>
+    <p>Education is, in many ways the engine of advancement in the United States. It also can reinforce inequality, as college graduates 
+      tend to have children who are also college graduates. 
+    </p>
     <form onchange="changeEducation(event)">
+      <h5>Highlight your highest level of education</h5>
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
         <label class="btn btn-primary">
           <input type="radio" name="Some HS" id="option1" autocomplete="off" value="Some HS">Some HS
@@ -58,28 +62,130 @@
 
     <div class="row">
       <div id="leftEducation" class="col-12"></div>
+      <div class="col-12">
+        <form onchange="changeEducationNetwork(event)">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="Some HS" id="option1" autocomplete="off" value="Fox">Fox
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option2" autocomplete="off" value="NPR">NPR
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="PBS">PBS
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option4" autocomplete="off" value="CNN">CNN
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="MSNBC">MSNBC
+            </label>
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="All" checked>All
+            </label>
+            
+          </div>
+        </form>            
+      </div>
       <div id="rightEducation" class="col-12"></div>
+      <div class="col-12">
+        <p>While it may not directly seem to require a degree, audience members without a four year college degree are not likely 
+          to find any representation in speakers on the news. Some of this can of course be explained in that experts are rarely 
+          going to lack a degree of some sort. Still it is worth noting that over 60% of the population over 25 lacks a 4 year degree,
+          and they see very little representation in the media.
+        </p>
+        <p>Looking at the per network break downs, it is clear that certain networks had differing approaches, CNN had a number of 
+          people with JDs (though that may have been driven by the news of the day), while Fox had far more Bachelors Degrees. 
+          NPR and MSNBC both had a large number of speakers with Masters degrees.
+        </p>
+      </div>
     </div>
-    Us Education based on <a
+
+    <div class="row">
+      <div class="col-12">
+
+      </div>
+    </div>
+    <p>Us Education based on <a
       href="https://www.census.gov/data/tables/2019/demo/educational-attainment/cps-detailed-tables.html">Census table
-      2.1</a>
+      2.1</a></p>
+    <p>Media Data collected by author</p>
+
     <h2>Selectivity of Education</h2>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-primary">
-        <input type="radio" name="options" id="option2" autocomplete="off" value="HS Graduate">&lt; 50%
-      </label>
-      <label class="btn btn-primary">
-        <input type="radio" name="options" id="option3" autocomplete="off" value="Some College"> 50-70%
-      </label>
-      <label class="btn btn-primary">
-        <input type="radio" name="options" id="option4" autocomplete="off" value="Associates"> 71-85%
-      </label>
-      <label class="btn btn-primary">
-        <input type="radio" name="options" id="option4" autocomplete="off" value="Associates"> &gt; 85%
-      </label>
-     </div>
-     Report based on <a href="NACA 2017 study">https://www.nacacnet.org/globalassets/documents/publications/research/2018_soca/soca2019_all.pdf</a> 
-    <h2>Focus of Education</h2>
+    <p>While it is often underrepresented in demographic breakdowns, most people recognize that there is a difference between an Ivy league school and say the University of Colorado.
+      Educational quality may be debated, but the University of Colorado is certainly less restrictive of its student body. 
+      If you went to an undergraduate college, you are encouraged to look up the acceptance rate, as it may be surprising. Few would suspect that
+      the University of Maine at 92% would over be four times less restrictive than the University of Michigan at 22%. 
+    </p>
+    <form onchange="changeSelectivity(event)">
+      <h5>Highlight your undergraduate acceptance rate</h5>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option2" autocomplete="off" value="&lt;50%">&lt; 50%
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3" autocomplete="off" value="50-70%"> 50-70%
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option4" autocomplete="off" value="71-85%"> 71-85%
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option4" autocomplete="off" value="&gt;85%"> &gt; 85%
+        </label>
+      </div>
+    </form>
+    <div class="row">
+      <div id="leftSelectivity" class="col-12"></div>
+      <div class="col-12">
+        <form onchange="changeSelectivityNetwork(event)">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="Some HS" id="option1" autocomplete="off" value="Fox">Fox
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option2" autocomplete="off" value="NPR">NPR
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="PBS">PBS
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option4" autocomplete="off" value="CNN">CNN
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="MSNBC">MSNBC
+            </label>
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="All" checked>All
+            </label>
+            
+          </div>
+        </form>            
+      </div>
+      <div id="rightSelectivity" class="col-12"></div>
+    </div>
+    <p>US Data based on <a href="https://www.nacacnet.org/globalassets/documents/publications/research/2018_soca/soca2019_all.pdf">NACA 2017 study</a>
+    </p>
+    <p>Media Data collected by author</p>
+    <div class="col-12">
+      <p>It is immediately obvious that there is a strong bias towards more selective schools. The data presented actually rather 
+        understates the case as the best national data availible groups all schools with an under 50% acceptance rate together. 
+        Many of the acceptance rates for media speakers were in fact much lower than this cut off. 
+      </p>
+      <p>On MSNBC in our sample there was not a single speaker who went to a anything other than the most selective of schools for undergraduate. 
+        This is strikingly unlike the US population at large. PBS was almost as restrictive, but had some variation. NPR had more in the somewhat 
+        less selective band, though the majority was still the most selective. Only Fox News has a majority outside of the most selective schools.
+        Fox News is also interesting as their second most popular band is of relatively permisive selectivity (71-85%). 
+      </p>
+      <p>
+        In determining class in the United States economists and sociologists often simply use income and education. This is mostly for ease 
+        of information gathering. Few would say that a person who got a Bachelor's degree in Nursing from SUNY Polytechnic College 69% was really in
+        the same socioeconomic class as someone who got a Bachelor's from Harvard College (4.7%), even if they both are economically and educational 
+        attainment wise the same. To put it bluntly they probably go to different parties, and read different books. 
+      </p>
+    </div>
+        <h2>Focus of Education</h2>
     <h2>College Qualia</h2>
 
     <!-- all we need is an element to select -->

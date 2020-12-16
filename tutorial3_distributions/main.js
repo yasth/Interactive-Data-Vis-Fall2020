@@ -245,10 +245,10 @@ function draw() {
 
 
 
-  svg.on('mousemove', function () {
+  svg.on('mousemove', function (event) {
     d3.select('#tooltip')
-      .style('left', (d3.event.pageX + 10) + 'px')
-      .style('top', (d3.event.pageY + 10) + 'px')
+      .style('left', (event.pageX + 10) + 'px')
+      .style('top', (event.pageY + 10) + 'px')
   });
 
 
