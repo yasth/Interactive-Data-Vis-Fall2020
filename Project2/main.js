@@ -111,24 +111,15 @@ function initEducationUS() {
 }
 function initEducationMedia() {
   const container = d3.select("#rightEducation")
-  drawEducationMedia();
-  svg = container
-    .append("svg")
-    .attr("height",400)
-    .attr("width","100%")
-    .attr("viewBox", [0, 0, width, height]);
-}
-function drawEducationMedia(){
-  const svg = d3.select("#rightEducation > svg")
-  let speakerData = Object.keys(state.Speaker);
-  if(state.Education.selectedEducationNetwork && state.Education.selectedEducationNetwork!= "All"){
-    speakerData = speakerData.filter(x=> state.Speaker[x][2] == state.Education.selectedEducationNetwork)
-  } 
-  let rollup = d3.rollup(speakerData,v=>v.length,d=>state.Speaker[d][3]);
-  let total = d3.sum(rollup.values());
-  let data = Object.assign(state.Education.EducationUS);
+  container.html('');
 
-  
+  svg = container
+  .append("svg")
+  .attr("height",400)
+  .attr("width","100%")
+  .attr("viewBox", [0, 0, width, height]);
+  let data = Object(state.Education.EducationUS);
+
   x = d3.scaleBand()
     .domain((d3.range(data.length)))
     .range([margin.left, width - margin.right])
@@ -155,25 +146,35 @@ function drawEducationMedia(){
   svg.append("g")
     .call(yAxis);
 
+  let speakerData = Object.keys(state.Speaker);
+  if(state.Education.selectedEducationNetwork && state.Education.selectedEducationNetwork!= "All"){
+    speakerData = speakerData.filter(x=> state.Speaker[x][2] == state.Education.selectedEducationNetwork)
+  } 
+  let rollup = d3.rollup(speakerData,v=>v.length,d=>state.Speaker[d][3]);
+  let total = d3.sum(rollup.values());
+  const t = svg.transition().duration(500);
+  
     svg.append("g")
-  .selectAll("rect")
+  .selectAll(".bar")
   .data(data)
   .join("rect")
     .attr("x", (d, i) => x(i))
     .attr("y", d => y(rollup.get(d.Education)/total*100))
+    .attr("class","bar")
+    .attr("data",d=>d.Education)
     .attr("height", d => y(0) - y(rollup.get(d.Education)/total*100)||0)
     .attr("fill",d=>d.Education == state.Education.selectedEducation ? highlightColor: color)
     .attr("width", x.bandwidth());
-
 }
 function changeEducation(e){
   state.Education.selectedEducation = e.target.value;
-  drawEducationMedia();
   initEducationUS();
+  initEducationMedia()
 }
 function changeEducationNetwork(e){
   state.Education.selectedEducationNetwork = e.target.value;
   initEducationMedia();
+
 }
 function changeSelectivityNetwork(e){
   state.Selectivity.selectedSelectivityNetwork = e.target.value;
