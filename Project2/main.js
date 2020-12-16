@@ -7,6 +7,7 @@ const width = window.innerWidth * 0.9,
   highlightColor = "firebrick";
 let svg;
 let tooltip;
+const format = d3.format(",d")
 
 /**
  * APPLICATION STATE
@@ -16,7 +17,9 @@ let state = {
   Education: {},
   Selectivity: {},
   Speaker:{},
-  College:{}
+  College:{},
+  Qualia:{}
+
 };
 
 /**
@@ -45,6 +48,7 @@ function init() {
   initEducationMedia();
   initSelectivityUS();
   initSelectivityMedia();
+  initQualia();
   // + INITIALIZE TOOLTIP IN YOUR CONTAINER ELEMENT
 
   // + CREATE YOUR ROOT HIERARCHY NODE
@@ -63,7 +67,7 @@ function initEducationUS() {
 
   svg = container
     .append("svg")
-    .attr("height",400)
+    .attr("height",500)
     .attr("width","100%")
     .attr("viewBox", [0, 0, width, height]);
   let data = state.Education.EducationUS;
@@ -107,6 +111,15 @@ function initEducationUS() {
 }
 function initEducationMedia() {
   const container = d3.select("#rightEducation")
+  drawEducationMedia();
+  svg = container
+    .append("svg")
+    .attr("height",400)
+    .attr("width","100%")
+    .attr("viewBox", [0, 0, width, height]);
+}
+function drawEducationMedia(){
+  const svg = d3.select("#rightEducation > svg")
   let speakerData = Object.keys(state.Speaker);
   if(state.Education.selectedEducationNetwork && state.Education.selectedEducationNetwork!= "All"){
     speakerData = speakerData.filter(x=> state.Speaker[x][2] == state.Education.selectedEducationNetwork)
@@ -114,13 +127,8 @@ function initEducationMedia() {
   let rollup = d3.rollup(speakerData,v=>v.length,d=>state.Speaker[d][3]);
   let total = d3.sum(rollup.values());
   let data = Object.assign(state.Education.EducationUS);
-  container.html('');
 
-  svg = container
-    .append("svg")
-    .attr("height",400)
-    .attr("width","100%")
-    .attr("viewBox", [0, 0, width, height]);
+  
   x = d3.scaleBand()
     .domain((d3.range(data.length)))
     .range([margin.left, width - margin.right])
@@ -156,10 +164,11 @@ function initEducationMedia() {
     .attr("height", d => y(0) - y(rollup.get(d.Education)/total*100)||0)
     .attr("fill",d=>d.Education == state.Education.selectedEducation ? highlightColor: color)
     .attr("width", x.bandwidth());
+
 }
 function changeEducation(e){
   state.Education.selectedEducation = e.target.value;
-  initEducationMedia();
+  drawEducationMedia();
   initEducationUS();
 }
 function changeEducationNetwork(e){
@@ -169,6 +178,10 @@ function changeEducationNetwork(e){
 function changeSelectivityNetwork(e){
   state.Selectivity.selectedSelectivityNetwork = e.target.value;
   initSelectivityMedia();
+}
+function changeQualiaNetwork(e){
+  state.Qualia.selectedSelectivityQualia = e.target.value;
+  initQualia();
 }
 function changeSelectivity(e){
   state.Selectivity.selectedSelectivity = e.target.value;
@@ -285,7 +298,107 @@ function initSelectivityMedia() {
 
 
 }
+function initQualia() {
+  const container = d3.select("#Qualia");
+  container.html('');
+  let speakerData = Object.keys(state.Speaker);
+  if(  state.Qualia.selectedSelectivityQualia &&   state.Qualia.selectedSelectivityQualia!= "All"){
+    speakerData = speakerData.filter(x=> state.Speaker[x][2] ==   state.Qualia.selectedSelectivityQualia)
+  } 
+  svg = container .append("svg")
+  .attr("height",500)
+  .attr("width","100%")
+  .attr("viewBox", [0, 0, 1000, 500]);
 
+  var speakerColleges = speakerData.map(k=>state.Speaker[k][4]);
+  var speakerValues = speakerColleges.map(k=>{
+    if(state.College[k]){
+      return state.College[k]
+    }
+    return null
+  });
+
+  window.rollup = d3.nest().key((d)=>d[1]).key((d)=>d[2]).rollup(v=>v.length).entries(speakerValues).sort((a,b)=>a.key > b.key);
+  
+
+
+  treemap = data => d3.treemap()
+    .tile(d3.treemapSquarify)
+    .size([1000, 500])
+    .padding(1)
+    .round(true)(d3.hierarchy(data,v => { return Array.isArray(v) ? v :  v.values}).sum(d => d.value));
+
+  let root = treemap(rollup);
+  
+
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  color("Private");
+  color("Public");
+  const leaf = svg.selectAll("g")
+  .data(root.leaves())
+  .join("g")
+    .attr("transform", d => `translate(${d.x0},${d.y0})`);
+    leaf.append("title")
+    .text(d => `${d.ancestors().reverse().map(d => d.data.key).join("/")}\n${format(d.data.value)}`);
+  leaf.append("rect")
+//      .attr("id", d => (d.leafUid ="leaf").id)
+      .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.key); })
+      .attr("fill-opacity", 0.6)
+      .attr("width", d => d.x1 - d.x0)
+      .attr("height", d => d.y1 - d.y0);
+
+    leaf.append("text")
+      .attr("clip-path", d => d.clipUid)
+    .selectAll("tspan")
+    .data(d =>  new Array(d.data.key  + " " +  format(d.data.value)))
+    .join("tspan")
+      .attr("x", 3)
+      .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
+      .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
+      .text(d => d);
+ 
+    
+    const size = 20;
+    const border_padding = 15;
+    const item_padding = 5;
+    const text_offset = 2;
+    const domains = ["Private","Public"]
+    const legend = svg.append("g")
+    // Apply a translation to the entire group 
+    .attr("transform", "translate(800, 400)")
+    // Border
+    legend
+      .append('rect')
+      .attr("width", 120)
+      .attr("height", 75)
+      .style("fill", "rgba(255,255,255,.5)")
+      .style("stroke-width", 1)
+      .style("stroke", "black");
+    
+    // Boxes
+    legend.selectAll("boxes")
+      .data(domains)
+      .enter()
+      .append("rect")
+        .attr("x", border_padding)
+        .attr("y", (d, i) => border_padding + (i * (size + item_padding)))
+        .attr("width", size)
+        .attr("height", size)
+        .style("fill", (d) => color(d));
+    
+    // Labels
+    legend.selectAll("labels")
+      .data(domains)
+      .enter()
+      .append("text")
+        .attr("x", border_padding + size + item_padding)
+        .attr("y", (d, i) => border_padding + i * (size + item_padding) + (size / 2) + text_offset)
+        // .style("fill", (d) => color(d))
+        .text((d) => d)
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+        .style("font-family", "sans-serif");
+}
 /**
  * DRAW FUNCTION
  * we call this everytime there is an update to the data/state

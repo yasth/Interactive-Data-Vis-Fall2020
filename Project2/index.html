@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Interactive Data Visualization Tutorial</title>
+  <title>Who speaks</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,7 +20,8 @@
 
 <body>
   <div class="container">
-    <h1>Who speaks: Demographics of Media On Camera talent</h1>
+    <h1>Who speaks: </h1>
+    <h2> Demographics of Media On Camera talent</h1>
     <!-- <h2>Gender Identity</h2>
     <div class="row">
       <div id="leftGender" class="col"></div>
@@ -55,8 +56,7 @@
           <input type="radio" name="options" id="option3" autocomplete="off" value="Professional"> Professional
         </label>
         <label class="btn btn-primary ">
-          <input type="radio" name="options" id="option3" autocomplete="off" value="Doctorate"> Doctorate
-        </label>
+          <input type="radio" name="options" id="option3" autocomplete="off" value="Doctoral"> Doctoral        </label>
       </div>
     </form>
 
@@ -185,9 +185,62 @@
         attainment wise the same. To put it bluntly they probably go to different parties, and read different books. 
       </p>
     </div>
-        <h2>Focus of Education</h2>
     <h2>College Qualia</h2>
-
+    <div class="row">
+      <div class="col-12">
+    <p>Just as not every college admits with the same breadth, not every college is of a similar type. Some colleges like Ohio State University have more graduates in a single year than have ever tread the halls of a small liberal 
+      arts college. That isn't to say that one is better than the other, just that there is a difference in the nature of what college is. 
+    </p>
+  </div>
+  </div>
+    <div class="row">
+      <div class="col-12">
+        <form onchange="changeQualiaNetwork(event)">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="Some HS" id="option1" autocomplete="off" value="Fox">Fox
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option2" autocomplete="off" value="NPR">NPR
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="PBS">PBS
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option4" autocomplete="off" value="CNN">CNN
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="MSNBC">MSNBC
+            </label>
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="All" checked>All
+            </label>
+            
+          </div>
+        </form>            
+      </div>
+      <div id="Qualia" class="col-12"></div>
+      <div class="col-12">
+        It is immediately obvious that private schools are very present across all networks. While some networks like Fox have a differing mix of schools, it is notable that there is still a certain level of elite selection. 
+        It is just that in Fox's case this is not selectivity based. 
+      </div>
+    </div>
+    <h2>Conclusion</h2>
+    <div class="row">
+      <div class="col-12">
+    <p>Obviously one can simply accept that media players are not representative of education and social class of the populace. This isn't considreed acceptable when dealing with issues of race, gender, or religion, but if one 
+      firmly believes that the grand sorting of college admissions does a good job, and that those who go to selective schools are more deserving then one can make a case that people who go to large public university systems
+      don't deserve to have representation in this field. 
+    </p>
+    <p>On the other hand even within the relatively tightly controlled bounds of media, there is some divergence particularly with Fox. It should also be mentioned that Fox has taken a commanding lead over their competitors. 
+      Much commentary assumes that this is entirely due to their political alignment, but I'd argue that some credit must be given to their wider range of background in their on screen talent. Some support for this can be found in their slogans
+      such as "We report, You decide", and "Real News, Real Honest Opinion" which are fairly obviously anti elitist in orientation. 
+    </p>
+    <p>Diversity whether it be racial, gender, or otherwise can often seem like a lowering of standards. In no way would I suggest that TV news needs to reflect the views of a fictional drunk uncle at Thanksgiving that doesn't 
+      quite know where Liberia is, but is 100% certain that the US is giving them too much money. However, it would be good to at least consider that a conversation with all of the participents having selective private liberal arts 
+    school backgrounds, might be improved by adding someone with different refernce points. It might even widen the audience</p>
+  </div>
     <!-- all we need is an element to select -->
     <div id="d3-container"> </div>
   </div>
